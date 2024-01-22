@@ -1,0 +1,220 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.prostate_cancer_screening_assessment.v0
+
+concept
+	[at0000]	-- Prostate cancer screening assessment
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Konstantinos Kalliamvakos">
+		["email"] = <"konstantinos.kalliamvakos@cambio.se">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2019-04-11">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To documemt the assessment of a prostate cancer screening.">
+			use = <"">
+			keywords = <"prostate", "cancer", "screening", "assessment">
+			misuse = <"">
+			copyright = <"Cambio Healthcare Systems">
+		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att dokumentera prostatacancer-undersökning bedömningen.">
+			use = <"*(en)">
+			keywords = <"*prostate(en)", "*cancer(en)", "*screening(en)", "*assessment(en)">
+			misuse = <"*(en)">
+			copyright = <"Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["current_contact"] = <"Konstantinos Kalliamvakos, Cambio Healthcare Systems<konstantinos.kalliamvakos@cambio.se>">
+		["MD5-CAM-1.0.1"] = <"75342FE8C681AA7C064CEE6036DD478C">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Prostate cancer screening assessment
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Assessment
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0003, 	-- More information is needed
+									at0004, 	-- Well-founded suspicion
+									at0005]	-- No well-founded suspicion
+								}
+							}
+						}
+					}
+					CLUSTER[at0006] occurrences matches {0..1} matches {	-- Left to investigate
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0007] occurrences matches {0..1} matches {	-- Anamnesis
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0008] occurrences matches {0..1} matches {	-- Prostate palpation
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0009] occurrences matches {0..1} matches {	-- Place order for PSA test
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+					ELEMENT[at0010] occurrences matches {0..1} matches {	-- To do
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0011] occurrences matches {0..1} matches {	-- Insufficient information
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0012] occurrences matches {0..1} matches {	-- Abnormally high PSA
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Prostate cancer screening assessment">
+					description = <"Suspicion of prostate cancer based on the assessment of prostate cancer screening.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Assessment">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"More information is needed">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Well-founded suspicion">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"No well-founded suspicion">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Left to investigate">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Anamnesis">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Prostate palpation">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Place order for PSA test">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"To do">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Insufficient information">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Abnormally high PSA">
+					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Bedömning av prostatacancer undersökning">
+					description = <"Misstanke om prostatacancer baserat på bedömningen av prostatacancer undersökning.">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"Bedömning">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"Mer information behövs">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Välgrundad misstanke">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Ej välgrundad misstanke">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Kvar att undersöka">
+					description = <"**(en)">
+				>
+				["at0007"] = <
+					text = <"Anamnes">
+					description = <"**(en)">
+				>
+				["at0008"] = <
+					text = <"Prostatapalpation">
+					description = <"**(en)">
+				>
+				["at0009"] = <
+					text = <"Beställ PSA-prov">
+					description = <"**(en)">
+				>
+				["at0010"] = <
+					text = <"Kvar att göra">
+					description = <"**(en)">
+				>
+				["at0011"] = <
+					text = <"Otillräcklig information">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Onormalt hög PSA">
+					description = <"*">
+				>
+			>
+		>
+	>

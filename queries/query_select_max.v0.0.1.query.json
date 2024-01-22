@@ -1,0 +1,15 @@
+{
+  "author": {
+    "name": "Konstantinos Kalliamvakos",
+    "email": "konstantinos.kalliamvakos@cambio.se"
+  },
+  "description": "",
+  "id": "se.cambio.cds::query_select_max",
+  "version": "0.0.1",
+  "timestamp": "2021-07-13T14:00:36+02:00",
+  "template": {
+    "id": "all_archetype_entry_types_including_action",
+    "version": "0.0.1"
+  },
+  "body": "SELECT\r\n  MAX (\r\n    a/data[at0001]/events[at0002]/data[at0003]/items[at0005]/value/magnitude\r\n  )\r\nFROM\r\n  EHR e CONTAINS COMPOSITION c CONTAINS (\r\n    OBSERVATION a [openEHR-EHR-OBSERVATION.observation_archetype.v0]\r\n  )\r\nWHERE\r\n  a/data[at0001]/events[at0002]/data[at0003]/items[at0005]/value/units = 'm'"
+}

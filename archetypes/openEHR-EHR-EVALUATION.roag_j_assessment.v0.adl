@@ -1,0 +1,303 @@
+archetype (adl_version=1.4; uid=076ae010-5023-4ba3-a610-d976ea0c0b56)
+	openEHR-EHR-EVALUATION.roag_j_assessment.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2023-11-08">
+		["name"] = <"Konstantinos Kalliamvakos">
+		["organisation"] = <"Cambio CDS">
+		["email"] = <"konstantinos.kalliamvakos@cambio.se">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Eneimi Allwell-Brown", ...>
+	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			keywords = <"ROAG-J","revised","oral","assessment","guide","Jönköping","hälsa","äldre","bedömning">
+			copyright = <"© openEHR Foundation">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To assess the recommended level of care for individuals with oral health problems.">
+			keywords = <"ROAG-J","revised","oral","assessment","guide","Jönköping","health","elderly","assessment">
+			copyright = <"© Cambio CDS">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"openEHR Foundation">
+		["references"] = <"Eilers J, Berger AM, Petersen MC. Development, testing, and application of the oral assessment guide. Oncol Nurs Forum. 1988 May-Jun;15(3):325-30. PMID: 3287344.
+Nordvall D, Andersson P, Gahnberg L, Hägglin C. Riskbedömning med ROAG-J i kvalitetsregistret Senior alert-Effekter på munhälsan ur ett longitudinellt perspektiv.">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["MD5-CAM-1.0.1"] = <"1f3699502486c2050dfb541fce5aa33b">
+		["build_uid"] = <"0fb066e4-8024-366f-b339-cab8bd90c3cd">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- ROAG-J Assessment
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Assessment
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {    -- Sum of 2 points
+						value matches {
+							DV_COUNT matches {*}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {    -- Sum of 3 points
+						value matches {
+							DV_COUNT matches {*}
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {    -- Recommendation
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					CLUSTER[at0006] occurrences matches {0..1} matches {    -- Causes
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0007] occurrences matches {0..1} matches {    -- Pain in the oral cavity during or between meals
+								value matches {
+									DV_BOOLEAN matches {*}
+								}
+							}
+							ELEMENT[at0008] occurrences matches {0..1} matches {    -- Impaired sensory capacity in the oral cavity
+								value matches {
+									DV_BOOLEAN matches {*}
+								}
+							}
+							ELEMENT[at0009] occurrences matches {0..1} matches {    -- Impaired mouth and facial muscles
+								value matches {
+									DV_BOOLEAN matches {*}
+								}
+							}
+							ELEMENT[at0010] occurrences matches {0..1} matches {    -- Impaired function in hand or arm or impaired general condition that worsens oral hygiene
+								value matches {
+									DV_BOOLEAN matches {*}
+								}
+							}
+							ELEMENT[at0011] occurrences matches {0..1} matches {    -- Impaired ability to understand information and instruction
+								value matches {
+									DV_BOOLEAN matches {*}
+								}
+							}
+							ELEMENT[at0012] occurrences matches {0..1} matches {    -- Short intervals between meals
+								value matches {
+									DV_BOOLEAN matches {*}
+								}
+							}
+							ELEMENT[at0013] occurrences matches {0..1} matches {    -- Other cause
+								value matches {
+									DV_BOOLEAN matches {*}
+								}
+							}
+						}
+					}
+					ELEMENT[at0014] occurrences matches {0..1} matches {    -- Date of next assessment
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+					ELEMENT[at0015] occurrences matches {0..1} matches {    -- Care plan activation
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0016,    -- Yes
+									at0017]    -- No
+								}
+							}
+						}
+					}
+					ELEMENT[at0018] occurrences matches {0..1} matches {    -- Reason for manual activation of care plan
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"ROAG-J Assessment">
+					description = <"Assessment of the ROAG-J">
+				>
+				["at0001"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Assessment">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Sum of 2 points">
+					description = <"">
+				>
+				["at0004"] = <
+					text = <"Sum of 3 points">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"Recommendation">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"Causes">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Pain in the oral cavity during or between meals">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Impaired sensory capacity in the oral cavity">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Impaired mouth and facial muscles">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Impaired function in hand or arm or impaired general condition that worsens oral hygiene">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"Impaired ability to understand information and instruction">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"Short intervals between meals">
+					description = <"">
+				>
+				["at0013"] = <
+					text = <"Other cause">
+					description = <"">
+				>
+				["at0014"] = <
+					text = <"Date of next assessment">
+					description = <"">
+				>
+				["at0015"] = <
+					text = <"Care plan activation">
+					description = <"">
+				>
+				["at0016"] = <
+					text = <"Yes">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"No">
+					description = <"">
+				>
+				["at0018"] = <
+					text = <"Reason for manual activation of care plan">
+					description = <"">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"ROAG-J Bedömning">
+					description = <"Bedömning av ROAG-J.">
+				>
+				["at0001"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Bedömning">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Summa antal 2:or">
+					description = <"">
+				>
+				["at0004"] = <
+					text = <"Summa antal 3:or">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"Rekommendation">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"Orsaker">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Har ont i munnen vid eller mellan måltid">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Nedsatt känsel i munnen">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Nedsatt funktion i mun och ansiktsmuskulatur">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Nedsatt funktion i hand eller arm eller nedsatt allmäntillstånd som försvårar munvård">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"Nedsatt förmåga att förstå information och instruktion">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"Korta intervaller mellan måltider">
+					description = <"">
+				>
+				["at0013"] = <
+					text = <"Annan orsak">
+					description = <"">
+				>
+				["at0014"] = <
+					text = <"Nästa riskbedömningstillfälle">
+					description = <"">
+				>
+				["at0015"] = <
+					text = <"Vårdplan aktivering">
+					description = <"">
+				>
+				["at0016"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0018"] = <
+					text = <"Anledning till att skapa vårdplan">
+					description = <"">
+				>
+			>
+		>
+	>

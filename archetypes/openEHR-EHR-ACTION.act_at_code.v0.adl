@@ -1,0 +1,59 @@
+archetype (adl_version=1.4; uid=1687adc2-2833-4e0e-a149-7e9d5573f7b7)
+	openEHR-EHR-ACTION.act_at_code.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2023-05-25">
+		["name"] = <"name">
+	>
+	lifecycle_state = <"unmanaged">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"openEHR Foundation">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["build_uid"] = <"2ef5b1ca-2e2c-38c3-9f82-679fa007e172">
+	>
+
+definition
+	ACTION[at0000] matches {    -- act_at_code
+		description matches {
+			ITEM_TREE matches {
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0001] occurrences matches {0..1} matches {    -- DV_TEXT
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"act_at_code">
+					description = <"act_at_code">
+				>
+				["at0001"] = <
+					text = <"DV_TEXT">
+					description = <"">
+				>
+			>
+		>
+	>

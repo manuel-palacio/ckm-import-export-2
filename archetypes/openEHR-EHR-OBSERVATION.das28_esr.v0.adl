@@ -1,0 +1,191 @@
+archetype (adl_version=1.4; uid=7b7184d8-fc85-4f09-828d-181ccde2b30d)
+	openEHR-EHR-OBSERVATION.das28_esr.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2023-02-02">
+		["name"] = <"Konstantinos Kalliamvakos">
+		["organisation"] = <"Cambio CDS">
+		["email"] = <"konstantinos.kalliamvakos@cambio.se">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the results for each component parameter for the DAS28 score.">
+			keywords = <"Disease","Activity","Score","DAS","28","Rheumatoid","Arthritis","RA","Joint","Tender","Swollen">
+			copyright = <"© Cambio CDS">
+			use = <"Use to record the results for each component parameter for the DAS28 score.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"openEHR Foundation">
+		["references"] = <"van der Heijde DM, van 't Hof MA, van Riel PL, Theunisse LA, Lubberts EW, van Leeuwen MA, van Rijswijk MH, van de Putte LB. Judging disease activity in clinical practice in rheumatoid arthritis: first step in the development of a disease activity score. Ann Rheum Dis. 1990 Nov;49(11):916-20. doi: 10.1136/ard.49.11.916. PMID: 2256738; PMCID: PMC1004262.">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["MD5-CAM-1.0.1"] = <"3df6ca7d680bca026c85d6a898603a54">
+		["build_uid"] = <"0aa2e691-0c45-3508-87b1-0ee20e053931">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Disease Activity Score 28 (DAS28)
+		data matches {
+			HISTORY[at0001] matches {    -- History
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..*} matches {    -- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0004] occurrences matches {0..28} matches {    -- Joints assessment
+										items cardinality matches {1..*; unordered} matches {
+											allow_archetype CLUSTER[at0005] occurrences matches {0..*} matches {    -- Joint
+												include
+													archetype_id/value matches {/openEHR-EHR-CLUSTER\.anatomical_location\.v1/}
+											}
+											ELEMENT[at0006] occurrences matches {0..1} matches {    -- Tender
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0007,    -- No
+															at0008]    -- Yes
+														}
+													}
+												}
+											}
+											ELEMENT[at0009] occurrences matches {0..1} matches {    -- Swollen
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0007,    -- No
+															at0008]    -- Yes
+														}
+													}
+												}
+											}
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {    -- Tender joints
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..28|}
+											}
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {    -- Swollen joints
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..28|}
+											}
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {    -- DAS28-ESR
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+														magnitude = <|>=0.0|>
+														precision = <|2|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {    -- DAS28-CRP
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+														magnitude = <|>=0.0|>
+														precision = <|2|>
+													>
+												>
+											>
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Disease Activity Score 28 (DAS28)">
+					description = <"An assessment score used to measure the disease activity in rheumatoid arthritis (RA). The number 28 refers to the 28 joints that are examined in this assessment.">
+					comment = <"Original version, c 1990">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Joints assessment">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"Joint">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"Tender">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"No">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Yes">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Swollen">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Tender joints">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"Swollen joints">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"DAS28-ESR">
+					description = <"">
+				>
+				["at0013"] = <
+					text = <"DAS28-CRP">
+					description = <"">
+				>
+			>
+		>
+	>

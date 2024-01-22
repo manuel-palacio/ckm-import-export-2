@@ -1,0 +1,225 @@
+archetype (adl_version=1.4; uid=c82ffab2-bef4-4ad5-9586-8ba1931edcf7)
+	openEHR-EHR-OBSERVATION.supported_data_types.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2021-09-30">
+	>
+	lifecycle_state = <"unmanaged">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"openEHR Foundation">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["MD5-CAM-1.0.1"] = <"a4f47565e7d353c2fff460d592ed477c">
+		["build_uid"] = <"5fbd494c-9941-3b54-a0e1-01227742b523">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Supported_data_types
+		data matches {
+			HISTORY[at0001] matches {    -- History
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..*} matches {    -- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {    -- DV_TEXT
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {    -- DV_CODED_TEXT
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0006,    -- coded text 1
+													at0007]    -- coded text 2
+												}
+											}
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {    -- DV_QUANTITY
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::122]>
+												list = <
+													["1"] = <
+														units = <"m">
+														magnitude = <|0.0..10.0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {    -- DV_PROPORTION
+										value matches {
+											DV_PROPORTION matches {
+												type matches {2}
+											}
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {    -- DV_COUNT
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..8|}
+											}
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {    -- DV_DATE_TIME
+										value matches {
+											DV_DATE_TIME matches {*}
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {    -- DV_TIME
+										value matches {
+											DV_TIME matches {*}
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {    -- DV_DATE
+										value matches {
+											DV_DATE matches {*}
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..1} matches {    -- DV_ORDINAL
+										value matches {
+											1|[local::at0016],
+											2|[local::at0017],
+											3|[local::at0018]
+										}
+									}
+									ELEMENT[at0019] occurrences matches {0..1} matches {    -- DV_BOOLEAN
+										value matches {
+											DV_BOOLEAN matches {*}
+										}
+									}
+									ELEMENT[at0020] occurrences matches {0..1} matches {    -- DV_IDENTIFIER
+										value matches {
+											DV_IDENTIFIER matches {*}
+										}
+									}
+									ELEMENT[at0021] occurrences matches {0..1} matches {    -- DV_DURATION
+										value matches {
+											DV_DURATION matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0010] matches {*}    -- Item tree
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Supported_data_types">
+					description = <"Supported_data_types">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"DV_TEXT">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"DV_CODED_TEXT">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"coded text 1">
+					description = <"coded text 1 desc">
+				>
+				["at0007"] = <
+					text = <"coded text 2">
+					description = <"coded text 2 desc">
+				>
+				["at0008"] = <
+					text = <"DV_QUANTITY">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"DV_PROPORTION">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0011"] = <
+					text = <"DV_COUNT">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"DV_DATE_TIME">
+					description = <"">
+				>
+				["at0013"] = <
+					text = <"DV_TIME">
+					description = <"">
+				>
+				["at0014"] = <
+					text = <"DV_DATE">
+					description = <"">
+				>
+				["at0015"] = <
+					text = <"DV_ORDINAL">
+					description = <"">
+				>
+				["at0016"] = <
+					text = <"ordinal 1">
+					description = <"ordinal 1 desc">
+				>
+				["at0017"] = <
+					text = <"ordinal 2">
+					description = <"ordinal 2 desc">
+				>
+				["at0018"] = <
+					text = <"ordinal 3">
+					description = <"ordinal 3 desc">
+				>
+				["at0019"] = <
+					text = <"DV_BOOLEAN">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"DV_IDENTIFIER">
+					description = <"">
+				>
+				["at0021"] = <
+					text = <"DV_DURATION">
+					description = <"">
+				>
+			>
+		>
+	>
